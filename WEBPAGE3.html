@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwen Josiah A. Alburo | Personal Webpage</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        /* Light Blue & Slate Matching Color Palette */
+        :root {
+            --bg-primary: #eef4f8;      /* Fresh Light Blue Background */
+            --bg-secondary: #ffffff;    /* Clean White for Cards */
+            --bg-sidebar: #1d2d44;      /* Deep Slate Blue Sidebar */
+            --accent-blue: #0066cc;     /* Strong Royal Blue Accent */
+            --text-dark: #0d1b2a;       /* Dark Navy Text */
+            --text-light: #ffffff;      /* White Text */
+            --text-muted: #5c677d;      /* Muted Gray Text */
+            --border-color: #d0dbec;    /* Soft Light Blue Border */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Glides smoothly when navigation links are pressed */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Fixed Sidebar Navigation Menu */
+        nav {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            z-index: 10;
+            box-shadow: 4px 0 15px rgba(29, 45, 68, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header p {
+            font-size: 0.8rem;
+            color: #9cb1cc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: #b0c4de;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.6rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .nav-link:hover {
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.08);
+            padding-left: 1.6rem;
+        }
+
+        /* Main Scrollable Window Area */
+        main {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 4rem 5rem;
+            max-width: 1100px;
+        }
+
+        /* Structural Page Blocks */
+        .content-section {
+            padding-top: 1rem;
+            margin-bottom: 6rem;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--bg-sidebar);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--border-color);
+            padding-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid Framework for Layout Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(29, 45, 68, 0.08);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: var(--bg-sidebar);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Full Name Welcome Hero Layout */
+        .hero-card {
+            background: linear-gradient(135deg, var(--bg-sidebar) 0%, #2c3e50 100%);
+            color: var(--text-light);
+            padding: 3.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(29, 45, 68, 0.15);
+        }
+
+        .hero-card h2 {
+            color: var(--text-light);
+            font-size: 2.8rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Profile Data Fact Sheet */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 1.2rem 0;
+            font-size: 1.05rem;
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 35%;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Engineering Pictures Configuration */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .career-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Floating Return Coordinates Target */
+        .top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--bg-sidebar);
+            color: var(--text-light);
+            border: none;
+            padding: 0.8rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .top-btn:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Viewport Reflow Handling */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            nav { position: relative; width: 100%; height: auto; padding: 1.5rem; }
+            main { margin-left: 0; padding: 2rem 1.5rem; }
+            .nav-link:hover { padding-left: 1.2rem; }
+            .hero-card { padding: 2rem; }
+            .hero-card h2 { font-size: 2rem; }
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- Left Navbar Navigation -->
+    <nav>
+        <div class="profile-header">
+            <h1>Dwen Josiah</h1>
+            <p>Grade 9 Portfolio</p>
+        </div>
+        <a href="#name-section" class="nav-link">My Name</a>
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#personal-info" class="nav-link">Personal Info</a>
+        <a href="#hobbies" class="nav-link">My Hobbies</a>
+        <a href="#school" class="nav-link">My School</a>
+        <a href="#career" class="nav-link">Future Career</a>
+    </nav>
+
+    <!-- Main Dynamic Frame -->
+    <main>
+
+        <!-- SECTION 1: WHOLE NAME HERO WELCOME -->
+        <section id="name-section" class="content-section" style="padding-top: 0;">
+            <div class="hero-card">
+                <h2>Dwen Josiah A. Alburo</h2>
+                <p>Welcome to my elegant personal portfolio website. Explore the sections below to learn more about my education, daily hobbies, and aspirations.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ABOUT ME -->
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">👋</span>
+                    <h3>Introduction</h3>
+                    <p>I am Dwen Josiah A. Alburo. I am a Grade 9 student who enjoys learning new things and exploring different interests.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎂</span>
+                    <h3>My Birthday</h3>
+                    <p>I was born on November 20, 2011. My birthday is a special day that reminds me of how much I have grown throughout the years.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📍</span>
+                    <h3>Where I Live</h3>
+                    <p>I live in Kauswagan, Cagayan de Oro City.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📖</span>
+                    <h3>My Interests</h3>
+                    <p>I really love to read. I also enjoy exercising and doing many different fun activities during my free time.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔬</span>

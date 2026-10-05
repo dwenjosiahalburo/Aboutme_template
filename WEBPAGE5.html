@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dwen Josiah A. Alburo | Personal Webpage</title>
+
+    <style>
+        /* ==============================
+           COLOR PALETTE
+        ============================== */
+
+        :root {
+            --bg-primary: #eef4f8;
+            --bg-secondary: #ffffff;
+            --bg-sidebar: #26374b;
+            --accent: #9fb3c8;
+            --accent-light: #d9e3ec;
+            --text-dark: #182633;
+            --text-light: #ffffff;
+            --text-muted: #5c6b78;
+            --border-color: #d0dce6;
+        }
+
+        /* ==============================
+           BASIC SETTINGS
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           SIDEBAR
+        ============================== */
+
+        nav {
+            width: 270px;
+
+            background: linear-gradient(
+                180deg,
+                #26374b,
+                #1d2b3a
+            );
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 2.5rem 1.5rem;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            height: 100vh;
+
+            z-index: 100;
+
+            box-shadow: 5px 0 20px rgba(38, 55, 75, 0.2);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-header h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .profile-header p {
+            color: #d9e3ec;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: #d5e0e9;
+            text-decoration: none;
+
+            font-size: 0.95rem;
+            font-weight: bold;
+
+            padding: 0.9rem 1rem;
+            margin-bottom: 0.5rem;
+
+            border-radius: 10px;
+
+            display: block;
+
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.13);
+            transform: translateX(7px);
+        }
+
+        /* ==============================
+           MAIN CONTENT
+        ============================== */
+
+        main {
+            margin-left: 270px;
+            padding: 3.5rem 5rem;
+            max-width: 1250px;
+        }
+
+        .content-section {
+            padding-top: 2rem;
+            margin-bottom: 6rem;
+
+            scroll-margin-top: 30px;
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero-card {
+            background: linear-gradient(
+                135deg,
+                #26374b,
+                #3b526b
+            );
+
+            color: white;
+
+            padding: 4rem;
+
+            border-radius: 20px;
+
+            margin-bottom: 3rem;
+
+            box-shadow: 0 15px 35px rgba(38, 55, 75, 0.25);
+
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-card h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-card p {
+            font-size: 1.15rem;
+            max-width: 750px;
+            opacity: 0.95;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            margin-top: 1.5rem;
+
+            padding: 0.8rem 1.5rem;
+
+            background-color: white;
+            color: #26374b;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background-color: #d9e3ec;
+            transform: translateY(-3px);
+        }
+
+        /* ==============================
+           SECTION HEADINGS
+        ============================== */
+
+        h2.section-title {
+            font-size: 2.2rem;
+            color: var(--bg-sidebar);
+
+            margin-bottom: 2rem;
+
+            padding-bottom: 0.7rem;
+
+            border-bottom: 3px solid var(--accent);
+
+            display: inline-block;
+        }
+
+        /* ==============================
+           GRID
+        ============================== */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(260px, 1fr));
+
+            gap: 1.5rem;
+        }
+
+        /* ==============================
+           CARDS
+        ============================== */
+
+        .card {
+            background-color: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 15px;
+
+            padding: 1.8rem;
+
+            box-shadow:
+                0 5px 15px rgba(38, 55, 75, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 12px 25px rgba(38, 55, 75, 0.16);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #26374b;
+            margin-bottom: 0.7rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* ==============================
+           PERSONAL INFORMATION
+        ============================== */
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 1rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #26374b;
+            width: 35%;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+        }
+
+        /* ==============================
+           HOBBIES
+        ============================== */
+
+        .hobby-card {
+            text-align: center;
+        }
+
+        .hobby-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ==============================
+           SCHOOL SECTION
+        ============================== */
+
+        .school-box {
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #eef4f8
+            );
+
+            padding: 2.5rem;
+
+            border-radius: 18px;
+
+            border-left: 6px solid #26374b;
+
+            box-shadow:
+                0 7px 20px rgba(38, 55, 75, 0.1);
+        }
+
+        .school-box h3 {
+            color: #26374b;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .school-details {
+            margin-top: 1rem;
+        }
+
+        .school-details p {
+            margin: 0.5rem 0;
+        }
+
+        /* ==============================
+           CAREER SECTION
+        ============================== */
+
+        .career-box {
+            background: linear-gradient(
+                135deg,
+                #26374b,
+                #3b526b
+            );
+
+            color: white;
+
+            padding: 2.5rem;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 12px 30px rgba(38, 55, 75, 0.2);
+
+            margin-bottom: 2rem;
+        }
+
+        .career-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .career-box p {
+            opacity: 0.95;
+        }
+
+        .career-reasons {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 1.5rem;
+
+            margin-top: 2rem;
+        }
+
+        .reason {
+            background-color: white;
+
+            color: var(--text-dark);
+
+            padding: 1.5rem;
+
+            border-radius: 14px;
+
+            transition: 0.3s;
+        }
+
+        .reason:hover {
+            transform: translateY(-5px);
+        }
+
+        .reason h4 {
+            color: #26374b;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==============================
+           IMAGE GALLERY
+        ============================== */
+
+        .image-gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 1.5rem;
+
+            margin-top: 2rem;
+        }
+
+        .image-card {
+            background-color: white;
+
+            padding: 0.8rem;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 15px rgba(38, 55, 75, 0.1);
+
+            transition: 0.3s;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 230px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            display: block;
+        }
+
+        .image-card p {
+            text-align: center;
+
+            padding: 0.8rem 0.3rem 0.3rem;
+
+            color: #5c6b78;
+
+            font-weight: bold;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            margin-left: 270px;
+
+            background-color: #26374b;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 2rem;
+
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.3rem;
+        }
+
+        /* ==============================
+           BACK TO TOP
+        ============================== */
+
+        .top-btn {
+            position: fixed;
+
+            bottom: 25px;
+            right: 25px;
+
+            background-color: #26374b;
+
+            color: white;
+
+            padding: 0.8rem 1.2rem;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.15);
+
+            transition: 0.3s;
+
+            z-index: 200;
+        }
+
+        .top-btn:hover {
+            background-color: #9fb3c8;
+
+            transform: translateY(-4px);
+        }
+
+        /* ==============================
+           ANIMATION
+        ============================== */
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                position: relative;
+
+                width: 100%;
+                height: auto;
+
+                padding: 1.5rem;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            main {
+                margin-left: 0;
+
+                padding: 2rem 1.2rem;
+            }
+
+            footer {
+                margin-left: 0;
+            }
+
+            .hero-card {
+                padding: 2rem;
+            }
+
+            .hero-card h2 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                margin-bottom: 4rem;
+            }
+
+            .top-btn {
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+
+<body id="top">
+
+
+    <!-- ==============================
+         NAVIGATION BAR
+    ============================== -->
+
+    <nav>
+
+        <div class="profile-header">
+
+            <h1>Dwen Josiah</h1>
+
+            <p>Grade 9 Portfolio</p>
+
+        </div>
+
+
+        <a href="#name-section" class="nav-link">
+            🏠 Home
+        </a>
+
+        <a href="#about" class="nav-link">
+            👋 About Me
+        </a>
+
+        <a href="#personal-info" class="nav-link">
+            👤 Personal Info
+        </a>
+
+        <a href="#hobbies" class="nav-link">
+            🎮 My Hobbies
+        </a>
+
+        <a href="#school" class="nav-link">
+            🏫 My School
+        </a>
+
+        <a href="#career" class="nav-link">
+            👨‍🔬 Future Career
+        </a>
+
+        <a href="#gallery" class="nav-link">
+            📸 Gallery
+        </a>
+
+    </nav>
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    ============================== -->
+
+    <main>
+
+
+        <!-- ==============================
+             HOME / NAME
+        ============================== -->
+
+        <section id="name-section" class="content-section">
+
+            <div class="hero-card">
+
+                <h2>Dwen Josiah A. Alburo</h2>
+
+                <p>
+                    Good day! Welcome to my personal portfolio website!
+                    This is my personal webpage and it contains personal information about 		me, my hobbies, my school, my interests, and my future career goals.
+                </p>
+
+                <a href="#about" class="hero-button">
+                    Explore My Portfolio →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             ABOUT ME
+        ============================== -->
+
+        <section id="about" class="content-section">
+
+            <h2 class="section-title">
+                👋 About Me
+            </h2>
+
+            <div class="grid">
+
+
+                <div class="card">
+
+                    <span class="card-icon">👋</span>
+
+                    <h3>Introduction</h3>
+
+                    <p>
+                        I am Dwen Josiah A. Alburo, a Grade 9
+                        student who enjoys learning new things
+                        and exploring different interests.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <span class="card-icon">🎂</span>
+
+                    <h3>My Birthday</h3>
+
+                    <p>
+                        I was born on November 20, 2011.
+                        My birthday is a special day that reminds
+                        me of how much I have grown throughout
+                        the years.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <span class="card-icon">📍</span>
+
+                    <h3>Where I Live</h3>
+
+                    <p>
+                        I live in Kauswagan,
+                        Cagayan de Oro City.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <span class="card-icon">📖</span>
+
+                    <h3>My Interests</h3>
+
+                    <p>
+                        I really love to read. I also enjoy
+                        exercising and doing different fun
+                        activities during my free time.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <span class="card-icon">🔬</span>
+
+                    <h3>Learning</h3>
+
+                    <p>
+                        I enjoy learning about new ideas,
+                        technology, science, and things that
+                        can help me understand the world better.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <span class="card-icon">🌱</span>
+
+                    <h3>My Goal</h3>
+
+                    <p>
+                        I want to continue improving myself,
+                        gaining knowledge, and developing skills
+                        that can help me achieve my future goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             PERSONAL INFORMATION
+        ============================== -->
+
+        <section id="personal-info" class="content-section">
+
+            <h2 class="section-title">
+                👤 Personal Information
+            </h2>
+
+            <div class="card">
+
+                <table class="info-table">
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            👤 Full Name
+                        </td>
+
+                        <td class="info-value">
+                            Dwen Josiah A. Alburo
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            🎓 Grade Level
+                        </td>
+
+                        <td class="info-value">
+                            Grade 9
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            📚 Section
+                        </td>
+
+                        <td class="info-value">
+                            Clever Dalton
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            🎂 Birthday
+                        </td>
+
+                        <td class="info-value">
+                            November 20, 2011
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            📍 Location
+                        </td>
+
+                        <td class="info-value">
+                            Kauswagan, Cagayan de Oro City
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="info-label">
+                            🎯 Future Career
+                        </td>
+
+                        <td class="info-value">
+                            Engineer
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             HOBBIES
+        ============================== -->
+
+        <section id="hobbies" class="content-section">
+
+            <h2 class="section-title">
+                🎮 My Hobbies
+            </h2>
+
+            <div class="grid">
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        🎮
+                    </div>
+
+                    <h3>Gaming</h3>
+
+                    <p>
+                        I enjoy playing games during my free time.
+                        Gaming can also help me develop problem-solving
+                        and strategic thinking skills.
+                    </p>
+
+                </div>
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        🎧
+                    </div>
+
+                    <h3>Listening to Music</h3>
+
+                    <p>
+                        I enjoy listening to music because it helps
+                        me relax and makes my free time more enjoyable.
+                    </p>
+
+                </div>
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        📚
+                    </div>
+
+                    <h3>Reading</h3>
+
+                    <p>
+                        I love reading because it allows me to
+                        discover new ideas, stories, and information.
+                    </p>
+
+                </div>
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        🏃
+                    </div>
+
+                    <h3>Exercise</h3>
+
+                    <p>
+                        I enjoy exercising because it keeps me
+                        active and gives me a productive way to
+                        spend my free time.
+                    </p>
+
+                </div>
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        🧠
+                    </div>
+
+                    <h3>Learning</h3>
+
+                    <p>
+                        I enjoy learning about different topics
+                        and discovering new things that interest me.
+                    </p>
+
+                </div>
+
+
+                <div class="card hobby-card">
+
+                    <div class="emoji">
+                        🎯
+                    </div>
+
+                    <h3>Trying New Things</h3>
+
+                    <p>
+                        I like exploring different activities
+                        and experiences that can help me learn
+                        and grow.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             SCHOOL
+        ============================== -->
+
+        <section id="school" class="content-section">
+
+            <h2 class="section-title">
+                🏫 My School
+            </h2>
+
+            <div class="school-box">
+
+                <h3>
+                    Misamis Oriental General Comprehensive High School
+                </h3>
+
+                <p>
+                    I am a student of MOGCHS, and throughout the years, I have learned many 		valuable things. In this school, I have learned how to interact with other 		people, gained more knowledge about science and technology, and developed 		important values that I can apply in life.
+
+
+                </p>
+
+
+                <div class="school-details">
+
+                    <p>
+                        🎓 <strong>Grade:</strong> 9
+                    </p>
+
+                    <p>
+                        📚 <strong>Section:</strong> Clever Dalton
+                    </p>
+
+                    <p>
+                        🔬 <strong>Interest:</strong>
+                        Science, technology, and math
+                    </p>
+
+                    <p>
+                        🌟 <strong>Goal:</strong>
+                        To continue learning and improve my skills
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             FUTURE CAREER
+        ============================== -->
+
+        <section id="career" class="content-section">
+
+            <h2 class="section-title">
+                👨‍🔬 My Future Career
+            </h2>
+
+
+            <div class="career-box">
+
+                <h3>
+                    🔧 I Want to Become an Engineer
+                </h3>
+
+                <p>
+                    In the future, I want to become an engineer.
+                    I am interested in engineering because it involves
+                    science, technology, creativity, and problem-solving.
+                    I want to use these skills to create useful solutions
+                    that can help people and improve everyday life.
+                </p>
+
+            </div>
+
+
+            <div class="career-reasons">
+
+
+                <div class="reason">
+
+                    <h4>
+                        🧠 Problem-Solving
+                    </h4>
+
+                    <p>
+                        Engineering requires people to analyze problems
+                        and find practical solutions.
+                    </p>
+
+                </div>
+
+
+                <div class="reason">
+
+                    <h4>
+                        🔬 Science & Technology
+                    </h4>
+
+                    <p>
+                        I am interested in science and technology,
+                        which are important parts of engineering.
+                    </p>
+
+                </div>
+
+
+                <div class="reason">
+
+                    <h4>
+                        💡 Creativity
+                    </h4>
+
+                    <p>
+                        Engineers can use creativity to design and
+                        develop new ideas and useful inventions.
+                    </p>
+
+                </div>
+
+
+                <div class="reason">
+
+                    <h4>
+                        🌍 Helping People
+                    </h4>
+
+                    <p>
+                        I want to create useful and sustainable
+                        solutions that can benefit people and
+                        the environment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CAREER IMAGE GALLERY
+        ============================== -->
+
+        <section id="gallery" class="content-section">
+
+            <h2 class="section-title">
+                📸 My Career Gallery
+            </h2>
+
+            <p>
+                These images represent my interest in engineering,
+                science, technology, and my future goals.
+            </p>
+
+
+            <div class="image-gallery">
+
+
+                <div class="image-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+                        alt="Engineering and technology"
+                    >
+
+                    <p>
+                        🔧 Engineering
+                    </p>
+
+                </div>
+
+
+                <div class="image-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"
+                        alt="Science laboratory"
+                    >
+
+                    <p>
+                        🔬 Science
+                    </p>
+
+                </div>
+
+
+                <div class="image-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+                        alt="Technology"
+                    >
+
+                    <p>
+                        💻 Technology
+                    </p>
+
+                </div>
+
+
+                <div class="image-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80"
+                        alt="Engineering tools"
+                    >
+
+                    <p>
+                        ⚙️ Future Goals
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Dwen Josiah A. Alburo
+        </p>
+
+        <p>
+            Grade 9 Personal Portfolio
+        </p>
+
+        <p>
+            🌟 Learning Today, Building Tomorrow 🌟
+        </p>
+
+    </footer>
+
+
+    <!-- ==============================
+         BACK TO TOP
+    ============================== -->
+
+    <a href="#top" class="top-btn">
+        ↑ Top
+    </a>
+
+
+</body>
+</html>
