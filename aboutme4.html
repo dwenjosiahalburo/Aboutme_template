@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dwen Josiah A. Alburo | Personal Webpage</title>
+
+    <style>
+
+        /* =========================
+           GENERAL PAGE
+        ========================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #702e56,
+                #c78aa4,
+                #e6d7b9
+            );
+            color: #3d2633;
+            line-height: 1.6;
+
+            animation: pageFade 1s ease-in;
+        }
+
+        /* =========================
+           PAGE FADE ANIMATION
+        ========================= */
+
+        @keyframes pageFade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #702e56;
+            color: white;
+            text-align: left;
+            padding: 55px 8%;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+            animation: headerSlide 1s ease;
+        }
+
+        @keyframes headerSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 19px;
+            color: #e6d7b9;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            background: #e6d7b9;
+            padding: 15px;
+            text-align: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        nav a {
+            display: inline-block;
+            color: #702e56;
+            text-decoration: none;
+            font-weight: bold;
+
+            margin: 5px 12px;
+            padding: 8px 10px;
+
+            transition:
+                color 0.3s ease,
+                background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            background-color: #702e56;
+            border-radius: 8px;
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        main {
+            width: 85%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* =========================
+           SECTION BOXES
+        ========================= */
+
+        .box {
+            background: #e6d7b9;
+
+            padding: 30px;
+            margin-bottom: 35px;
+
+            border-radius: 18px;
+            border: 3px solid #c78aa4;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+
+            animation: boxAppear 0.8s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.2);
+
+            border-color: #702e56;
+        }
+
+        @keyframes boxAppear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           SECTION TITLES
+        ========================= */
+
+        .box h2 {
+            font-family: Arial, sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+
+            color: #702e56;
+
+            border-bottom: 4px solid #c78aa4;
+
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        .box p {
+            font-size: 17px;
+        }
+
+        /* =========================
+           INFORMATION CARDS
+        ========================= */
+
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 220px;
+
+            background: #c78aa4;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px) scale(1.02);
+
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        .info-card h3 {
+            color: #702e56;
+            margin-top: 0;
+        }
+
+        /* =========================
+           HOBBY CARDS
+        ========================= */
+
+        .hobby-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hobby {
+            flex: 1;
+            min-width: 200px;
+
+            background: #702e56;
+            color: white;
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition:
+                transform 0.4s ease,
+                background-color 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .hobby:hover {
+            transform: translateY(-8px) scale(1.03);
+
+            background-color: #c78aa4;
+
+            color: #702e56;
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* =========================
+           SCHOOL SECTION
+        ========================= */
+
+        .school-card {
+            background: #c78aa4;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .school-card:hover {
+            transform: scale(1.02);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        /* =========================
+           CAREER SECTION
+        ========================= */
+
+        .career-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .career-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .career-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .career-image img {
+            width: 100%;
+            max-width: 450px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.2);
+
+            transition:
+                transform 0.5s ease,
+                box-shadow 0.5s ease;
+        }
+
+        .career-image img:hover {
+            transform: scale(1.05);
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* =========================
+           REASONS SECTION
+        ========================= */
+
+        .reason {
+            background: #c78aa4;
+
+            padding: 20px;
+
+            margin: 15px 0;
+
+            border-left: 7px solid #702e56;
+
+            border-radius: 10px;
+
+            transition:
+                transform 0.3s ease,
+                padding-left 0.3s ease;
+        }
+
+        .reason:hover {
+            transform: translateX(8px);
+
+            padding-left: 28px;
+        }
+
+        /* =========================
+           GOAL SECTION
+        ========================= */
+
+        .goal {
+            background: #702e56;
+
+            color: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .goal:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .goal h3 {
+            color: #5ce1e6;
+        }
+
+        /* =========================
+           IMAGES
+        ========================= */
+
+        img {
+            max-width: 100%;
+            height: auto;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        img:hover {
+            transform: scale(1.03);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #702e56;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* =========================
+           MOBILE DESIGN
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 42px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            nav a {
+                margin: 3px;
+                font-size: 14px;
+            }
+
+            main {
+                width: 92%;
+            }
+
+            .box {
+                padding: 22px;
+            }
+
+            .box h2 {
+                font-size: 25px;
+            }
+
+            .career-container {
+                flex-direction: column;
+            }
+
+            .career-image {
+                order: -1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+        <h1>Dwen Josiah A. Alburo</h1>
+
+        <p>Welcome to My Personal Webpage</p>
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="#about">About Me</a>
+
+        <a href="#personal">Personal Information</a>
+
+        <a href="#hobbies">Hobbies</a>
+
+        <a href="#school">My School</a>
+
+        <a href="#career">My Future Career</a>
+
+        <a href="#reasons">Why I Chose Engineering</a>
+
+        <a href="#goal">My Goal</a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+
+
+        <!-- ABOUT ME -->
+
+        <section class="box" id="about">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello! My name is Dwen Josiah A. Alburo.
+                I am a student who enjoys learning new things,
+                exploring my interests, and developing my skills.
+            </p>
+
+            <p>
+                This webpage contains information about me,
+                my hobbies, my school, and my future career.
+            </p>
+
+        </section>
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <section class="box" id="personal">
+
+            <h2>Personal Information</h2>
+
+            <div class="info-container">
+
+                <div class="info-card">
+                    <h3>Name</h3>
+                    <p>Dwen Josiah A. Alburo</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Grade Level</h3>
+                    <p>Grade 9</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Section</h3>
+                    <p>Clever Dalton</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOBBIES -->
+
+        <section class="box" id="hobbies">
+
+            <h2>My Hobbies</h2>
+
+            <div class="hobby-container">
+
+                <div class="hobby">
+                    <h3>Gaming</h3>
+                    <p>
+                        I enjoy playing games during my free time.
+                    </p>
+                </div>
+
+                <div class="hobby">
+                    <h3>Listening to Music</h3>
+                    <p>
+                        Music helps me relax and enjoy my free time.
+                    </p>
+                </div>
+
+                <div class="hobby">
+                    <h3>Learning</h3>
+                    <p>
+                        I enjoy learning new things and improving my skills.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCHOOL -->
+
+        <section class="box" id="school">
+
+            <h2>My School</h2>
+
+            <div class="school-card">
+
+                <h3>Misamis Oriental General Comprehensive High School</h3>
+
+                <p>
+                    My school is a place where I learn new knowledge,
+                    develop my skills, meet different people, and
+                    prepare myself for the future.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUTURE CAREER -->
+
+        <section class="box" id="career">
+
+            <h2>My Future Career</h2>
+
+            <div class="career-container">
+
+                <div class="career-text">
+
+                    <h3>Engineer</h3>
+
+                    <p>
+                        In the future, I want to become an engineer.
+                        Engineering allows people to use science,
+                        mathematics, creativity, and technology to
+                        solve problems and create useful things.
+                    </p>
+
+                    <p>
+                        I am interested in engineering because I want
+                        to create solutions that can help people and
+                        improve everyday life.
+                    </p>
+
+                </div>
+
+
+                <div class="career-image">
+
+                    <!--
+                    Replace the image URL below with your own
+                    picture if you want to use your own image.
+                    -->
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80"
+                        alt="Engineering"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REASONS -->
+
+        <section class="box" id="reasons">
+
+            <h2>Why I Chose Engineering</h2>
+
+            <div class="reason">
+
+                <h3>1. I Like Solving Problems</h3>
+
+                <p>
+                    Engineering involves finding solutions to
+                    different problems using knowledge and creativity.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <h3>2. I Enjoy Science and Technology</h3>
+
+                <p>
+                    Engineering allows me to apply science,
+                    mathematics, and technology in real situations.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <h3>3. I Want to Help People</h3>
+
+                <p>
+                    Engineers can create technologies and structures
+                    that make people's lives easier and better.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GOAL -->
+
+        <section class="box" id="goal">
+
+            <h2>My Goal as a Future Engineer</h2>
+
+            <div class="goal">
+
+                <h3>My Future Goal</h3>
+
+                <p>
+                    My goal is to become a successful engineer who
+                    uses knowledge, creativity, and technology to
+                    create useful and sustainable solutions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Dwen Josiah A. Alburo | My Personal Webpage
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
