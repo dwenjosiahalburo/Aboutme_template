@@ -1,0 +1,470 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dwen Josiah A. Alburo | Personal Webpage</title>
+
+    <style>
+
+        /* ===== GENERAL DESIGN ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #17212b;
+            color: #f1f5f9;
+            line-height: 1.7;
+        }
+
+        /* ===== TOP HEADER ===== */
+
+        header {
+            background: #0f1720;
+            text-align: center;
+            padding: 45px 20px;
+            border-bottom: 3px solid #3b82a0;
+        }
+
+        header h1 {
+            font-size: 42px;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #a8bac8;
+            font-size: 17px;
+        }
+
+        /* ===== NAVIGATION ===== */
+
+        nav {
+            background: #111c27;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #30404f;
+        }
+
+        nav a {
+            color: #dce7ef;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #63b3d1;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: 45px auto;
+        }
+
+        /* ===== BOXES ===== */
+
+        .box {
+            background: #202d39;
+            border: 1px solid #3a4b5a;
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .box:hover {
+            border-color: #63b3d1;
+            transform: translateY(-3px);
+            transition: 0.3s;
+        }
+
+        /* ===== SECTION TITLES ===== */
+
+        .box h2 {
+            color: #72c3df;
+            font-size: 27px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #405362;
+            padding-bottom: 10px;
+        }
+
+        .box h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .box p {
+            color: #d0dae2;
+            font-size: 16px;
+        }
+
+        /* ===== ABOUT ME ===== */
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info {
+            background: #182530;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #63b3d1;
+        }
+
+        .info strong {
+            color: #72c3df;
+        }
+
+        /* ===== HOBBIES ===== */
+
+        .hobby-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .hobby {
+            background: #182530;
+            padding: 22px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #344754;
+        }
+
+        .hobby .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .hobby h3 {
+            color: #72c3df;
+        }
+
+        /* ===== SCHOOL ===== */
+
+        .school-box {
+            background: #182530;
+            padding: 22px;
+            border-radius: 10px;
+            border-left: 4px solid #63b3d1;
+        }
+
+        /* ===== CAREER ===== */
+
+        .career-box {
+            background: linear-gradient(
+                135deg,
+                #1d3442,
+                #202d39
+            );
+
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #486577;
+        }
+
+        .career-box h3 {
+            font-size: 25px;
+            color: #72c3df;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #0f1720;
+            text-align: center;
+            padding: 25px;
+            color: #94a8b7;
+            border-top: 1px solid #30404f;
+        }
+
+        footer strong {
+            color: #dce7ef;
+        }
+
+        /* ===== MOBILE DESIGN ===== */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                margin: 0 6px;
+                font-size: 13px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hobby-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+
+    <header>
+        <h1>Dwen Josiah A. Alburo</h1>
+        <p>My Personal Webpage • Grade 9 Student</p>
+    </header>
+
+
+    <!-- ===== NAVIGATION ===== -->
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#school">School</a>
+        <a href="#career">Future Career</a>
+    </nav>
+
+
+    <main>
+
+        <!-- ===== ABOUT ME ===== -->
+
+        <section id="about" class="box">
+
+            <h2>About Me</h2>
+
+            <p>
+                I am Dwen Josiah A. Alburo. I was born on
+                November 20, 2011, and I live in Kauswagan,
+                Cagayan de Oro City.
+            </p>
+
+            <br>
+
+            <p>
+                I really love to read, and I also like to exercise
+                and do a lot of fun things. My favorite subject is
+                Mathematics, but I also like learning more about
+                Science.
+            </p>
+
+            <br>
+
+            <p>
+                This is actually my first time making my own
+                webpage, and I am having a lot of fun learning
+                how to create it. It is pretty challenging,
+                but it also makes me interested in learning
+                more about HTML and web design.
+            </p>
+
+        </section>
+
+
+        <!-- ===== PERSONAL INFORMATION ===== -->
+
+        <section class="box">
+
+            <h2>Personal Information</h2>
+
+            <div class="about-content">
+
+                <div class="info">
+                    <strong>Name</strong>
+                    <p>Dwen Josiah A. Alburo</p>
+                </div>
+
+                <div class="info">
+                    <strong>Birthday</strong>
+                    <p>November 20, 2011</p>
+                </div>
+
+                <div class="info">
+                    <strong>Location</strong>
+                    <p>Kauswagan, Cagayan de Oro City</p>
+                </div>
+
+                <div class="info">
+                    <strong>Favorite Subject</strong>
+                    <p>Mathematics</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== HOBBIES ===== -->
+
+        <section id="hobbies" class="box">
+
+            <h2>My Hobbies</h2>
+
+            <div class="hobby-container">
+
+                <div class="hobby">
+                    <div class="icon">📚</div>
+                    <h3>Reading</h3>
+                    <p>
+                        I enjoy reading because it allows me
+                        to discover new ideas and stories.
+                    </p>
+                </div>
+
+                <div class="hobby">
+                    <div class="icon">🏃</div>
+                    <h3>Exercise</h3>
+                    <p>
+                        I like exercising because it keeps me
+                        active and helps me stay healthy.
+                    </p>
+                </div>
+
+                <div class="hobby">
+                    <div class="icon">🎮</div>
+                    <h3>Fun Activities</h3>
+                    <p>
+                        I also enjoy doing different fun
+                        activities during my free time.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== SCHOOL ===== -->
+
+        <section id="school" class="box">
+
+            <h2>My School</h2>
+
+            <div class="school-box">
+
+                <h3>Misamis Oriental General Comprehensive High School</h3>
+
+                <p>
+                    My school is a place where I learn new things,
+                    develop my skills, and meet different people.
+                    It helps me become more responsible and
+                    disciplined while preparing me for my future.
+                </p>
+
+                <br>
+
+                <p>
+                    I especially enjoy learning subjects such as
+                    Mathematics and Science because they help me
+                    understand how things work and encourage me
+                    to think critically.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== FUTURE CAREER ===== -->
+
+        <section id="career" class="box">
+
+            <h2>My Future Career</h2>
+
+            <div class="career-box">
+
+                <h3>⚙️ I Want to Become an Engineer</h3>
+
+                <br>
+
+                <p>
+                    My future career is to become an engineer.
+                    I am interested in engineering because I enjoy
+                    Mathematics and Science, and I like solving
+                    problems and understanding how things work.
+                </p>
+
+                <br>
+
+                <p>
+                    I also want to become an engineer because
+                    engineering allows people to create useful
+                    things, develop new ideas, and find solutions
+                    to real-world problems. I hope that someday
+                    I can use my knowledge and skills to create
+                    something that can help other people.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== MY FIRST WEBPAGE ===== -->
+
+        <section class="box">
+
+            <h2>My First Webpage</h2>
+
+            <p>
+                Creating this webpage is a new experience for me.
+                At first, HTML seemed challenging because there
+                are many tags and codes to remember. However,
+                as I continue practicing, I am beginning to
+                understand how websites are created.
+            </p>
+
+            <br>
+
+            <p>
+                I am having fun learning HTML, and I hope to
+                improve my web design skills in the future.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>
+            <strong>Dwen Josiah A. Alburo</strong>
+        </p>
+
+        <p>
+            My Personal Webpage • 2026
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+```
