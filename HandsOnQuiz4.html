@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Blue Survey | HandsOnQuiz4</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#021a38; --deep:#06407a; --sea:#1b7fd6; --aqua:#7fdbff; --foam:#eaf8ff;
+  --glass:rgba(4,40,84,.55);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--foam); /* TEXT COLOR */
+  font:17px/1.6 "Nunito",system-ui,sans-serif;
+  background:linear-gradient(160deg,#021a38,#06407a,#1b7fd6,#0a5db0,#021a38);
+  background-size:400% 400%;
+  animation:tide 24s ease-in-out infinite; /* ANIMATED BACKGROUND */
+  overflow-x:hidden;
+}
+@keyframes tide{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+a:link{color:var(--aqua)} a:visited{color:#a9c9ff} a:hover{color:#fff} /* LINK COLORS */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+/* light rays from the surface */
+.rays{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(105deg,rgba(127,219,255,.10) 0 40px,transparent 40px 130px);
+  mask-image:linear-gradient(#000,transparent 70%);-webkit-mask-image:linear-gradient(#000,transparent 70%);
+  animation:sway 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+
+/* bubbles + fish layer */
+#sea{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.bubble{position:absolute;bottom:-40px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8),rgba(127,219,255,.15) 60%,transparent 70%);
+  border:1px solid rgba(255,255,255,.35);animation:rise linear infinite}
+@keyframes rise{to{transform:translate(var(--dx),-115vh)}}
+.fish{position:absolute;font-size:2rem;animation:swim linear infinite;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+@keyframes swim{from{transform:translateX(-12vw)}to{transform:translateX(112vw)}}
+.fish.back{animation-name:swimback}
+@keyframes swimback{from{transform:translateX(112vw) scaleX(-1)}to{transform:translateX(-12vw) scaleX(-1)}}
+
+/* waves at the bottom */
+.waves{position:fixed;left:0;right:0;bottom:0;height:90px;z-index:1;pointer-events:none;opacity:.55}
+.waves svg{position:absolute;bottom:0;width:200%;height:100%;animation:roll 14s linear infinite}
+.waves svg+svg{animation-duration:22s;animation-direction:reverse;opacity:.6;bottom:6px}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+main,header,footer{position:relative;z-index:2}
+header{text-align:center;padding:64px 20px 24px}
+h1{font:600 clamp(2.4rem,8vw,5rem)/1.05 "Fredoka",sans-serif;margin:0;letter-spacing:.02em;
+  text-shadow:0 6px 24px rgba(0,20,60,.6)}
+h1 span{display:inline-block;animation:bob 3s ease-in-out infinite;animation-delay:calc(var(--i)*.12s)}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.tag{margin:.6rem auto 0;max-width:46ch;color:#cfeeff}
+nav{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+nav a{padding:8px 18px;border-radius:999px;background:rgba(127,219,255,.14);border:1px solid rgba(127,219,255,.5);text-decoration:none;font-weight:700;transition:background .2s}
+nav a:hover{background:rgba(127,219,255,.35)}
+
+main{max-width:900px;margin:0 auto;padding:10px 18px 150px}
+section{margin:34px 0;padding:26px 28px 30px;border-radius:28px 28px 28px 8px;
+  background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(127,219,255,.35);box-shadow:0 20px 50px rgba(0,10,40,.45)}
+h2{font:600 1.9rem/1.2 "Fredoka",sans-serif;margin:0 0 4px}
+.depth{display:block;color:var(--aqua);font-size:.9rem;margin-bottom:18px}
+
+/* form */
+fieldset{border:1px dashed rgba(127,219,255,.55);border-radius:18px;margin:20px 0;padding:14px 20px 12px}
+legend{font:600 1.1rem "Fredoka",sans-serif;padding:0 10px;color:var(--aqua)}
+.row{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;align-items:center;margin:10px 0}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+label{font-weight:700}
+input[type=text],input[type=number],input[type=tel],input[type=email],select,textarea{
+  width:100%;padding:10px 14px;border-radius:14px;border:2px solid #3b9de8;
+  background:rgba(2,26,56,.7);color:var(--foam);font:inherit;transition:border-color .2s,box-shadow .2s}
+input::placeholder,textarea::placeholder{color:#8fb8dd}
+input:focus,select:focus,textarea:focus{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(127,219,255,.25)}
+.choices{display:flex;flex-wrap:wrap;gap:10px}
+.choices label{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+  background:rgba(27,127,214,.3);border:1px solid rgba(127,219,255,.4);cursor:pointer;font-weight:400;transition:transform .15s,background .15s}
+.choices label:hover{transform:translateY(-2px);background:rgba(27,127,214,.55)}
+.choices input{accent-color:#7fdbff;width:18px;height:18px}
+.choices label:has(input:checked){background:#1b7fd6;border-color:#fff;font-weight:700}
+textarea{min-height:120px;resize:vertical}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+button{font:600 1.1rem "Fredoka",sans-serif;padding:12px 30px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+button:hover{transform:translateY(-3px)}
+button:active{transform:scale(.96)}
+.send{background:linear-gradient(135deg,#7fdbff,#1b7fd6);color:#021a38;box-shadow:0 8px 20px rgba(127,219,255,.35)}
+.reset{background:transparent;color:var(--foam);border:2px solid var(--aqua)}
+#bottle{display:none;margin-top:20px;padding:18px 22px;border-radius:18px;background:rgba(127,219,255,.2);border:2px solid var(--aqua);animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+
+/* tables */
+.wrap{overflow-x:auto;border-radius:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;min-width:420px}
+caption{text-align:left;font:600 1.2rem "Fredoka",sans-serif;padding:6px 0 10px;color:var(--aqua)}
+th{background:#1b7fd6;color:#fff;text-align:left;padding:10px 14px}
+td{padding:9px 14px;border-bottom:1px solid rgba(127,219,255,.22)}
+tbody tr:nth-child(even){background:rgba(27,127,214,.18)}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:rgba(127,219,255,.28)}
+td:first-child,th:first-child{width:3.2rem;text-align:center}
+footer{text-align:center;padding:0 20px 120px;color:#bfe6ff}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div id="sea" aria-hidden="true"></div>
+<div class="waves" aria-hidden="true">
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#7fdbff" d="M0 50 Q150 0 300 50 T600 50 T900 50 T1200 50 V100 H0Z"/></svg>
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#1b7fd6" d="M0 60 Q150 15 300 60 T600 60 T900 60 T1200 60 V100 H0Z"/></svg>
+</div>
+
+<header id="top">
+  <h1 id="title" aria-label="Deep Blue Survey">Deep Blue Survey</h1>
+  <p class="tag">Dive in, fill out the form, and see my favorite songs, movies and games from the deep end of the ocean.</p>
+  <nav>
+    <a href="#form">The Survey Form</a>
+    <a href="#songs">Top 10 Songs</a>
+    <a href="#movies">Top 10 Movies</a>
+    <a href="#games">Top 10 Games</a>
+  </nav>
+</header>
+
+<main>
+  <!-- FORM -->
+  <section id="form">
+    <h2>Message in a Bottle</h2>
+    <span class="depth">Sunlight zone, 0 m</span>
+
+    <form id="survey" action="#" method="post">
+      <fieldset>
+        <legend>About you</legend>
+        <div class="row"><label for="fn">Firstname, Lastname:</label>
+          <input type="text" id="fn" name="fullname" placeholder="e.g. Juan Dela Cruz" required></div>
+        <div class="row"><label for="gender">Gender:</label>
+          <input type="text" id="gender" name="gender" placeholder="Type your gender"></div>
+        <div class="row"><label for="age">Age:</label>
+          <input type="number" id="age" name="age" min="1" max="120" placeholder="Your age"></div>
+        <div class="row"><label for="addr">Address:</label>
+          <input type="text" id="addr" name="address" placeholder="Street, City, Province"></div>
+        <div class="row"><label for="tel">Tel. No.:</label>
+          <input type="tel" id="tel" name="tel" placeholder="09XX XXX XXXX"></div>
+        <div class="row"><label for="mail">E-mail Address:</label>
+          <input type="email" id="mail" name="email" placeholder="you@example.com"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Favorite drinks</legend>
+        <div class="choices">
+          <label><input type="radio" name="drink" value="Chocolate"> Chocolate</label>
+          <label><input type="radio" name="drink" value="Milk"> Milk</label>
+          <label><input type="radio" name="drink" value="Juice"> Juice</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferred food toppings</legend>
+        <div class="choices">
+          <label><input type="checkbox" name="topping" value="Tapsilog"> Tapsilog</label>
+          <label><input type="checkbox" name="topping" value="Longsilog"> Longsilog</label>
+          <label><input type="checkbox" name="topping" value="Tosilog"> Tosilog</label>
+          <label><input type="checkbox" name="topping" value="Hotsilog"> Hotsilog</label>
+          <label><input type="checkbox" name="topping" value="Hamsilog"> Hamsilog</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Likes and chores</legend>
+        <div class="row"><label for="act">Activities:</label>
+          <select id="act" name="activity">
+            <option value="">Choose an activity</option>
+            <option>Basketball</option><option>Football</option>
+            <option>Computer Games</option><option>Biking</option>
+          </select></div>
+        <div class="row"><label for="chore">Household chores:</label>
+          <select id="chore" name="chore">
+            <option value="">Choose a chore</option>
+            <option>Washing dishes</option><option>Mapping floor</option>
+            <option>Washing clothes</option><option>Cleaning house</option>
+          </select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Comments</legend>
+        <textarea id="cm" name="comments" rows="5" cols="40" placeholder="Write your message for the bottle here..."></textarea>
+      </fieldset>
+
+      <div class="btns">
+        <button type="submit" class="send">Send</button>
+        <button type="reset" class="reset">Reset</button>
+      </div>
+      <div id="bottle" role="status"></div>
+    </form>
+  </section>
+
+  <!-- TABLES -->
+  <section id="songs">
+    <h2>Treasure Chest: Songs</h2>
+    <span class="depth">Twilight zone, 200 m</span>
+    <div class="wrap">
+    <table>
+      <caption>Top 10 Favorite Songs</caption>
+      <thead><tr><th>#</th><th>Title</th><th>Singer</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Shape of You</td><td>Ed Sheeran</td></tr>
+        <tr><td>2</td><td>Blinding Lights</td><td>The Weeknd</td></tr>
+        <tr><td>3</td><td>Believer</td><td>Imagine Dragons</td></tr>
+        <tr><td>4</td><td>Perfect</td><td>Ed Sheeran</td></tr>
+        <tr><td>5</td><td>Someone Like You</td><td>Adele</td></tr>
+        <tr><td>6</td><td>Counting Stars</td><td>OneRepublic</td></tr>
+        <tr><td>7</td><td>Shallow</td><td>Lady Gaga &amp; Bradley Cooper</td></tr>
+        <tr><td>8</td><td>Uptown Funk</td><td>Mark Ronson ft. Bruno Mars</td></tr>
+        <tr><td>9</td><td>Let Her Go</td><td>Passenger</td></tr>
+        <tr><td>10</td><td>Thinking Out Loud</td><td>Ed Sheeran</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="movies">
+    <h2>Shipwreck Cinema: Movies</h2>
+    <span class="depth">Midnight zone, 1,000 m</span>
+    <div class="wrap">
+    <table>
+      <caption>Top 10 Favorite Movies</caption>
+      <thead><tr><th>#</th><th>Title</th><th>Cast</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Finding Nemo</td><td>Albert Brooks, Ellen DeGeneres, Alexander Gould</td></tr>
+        <tr><td>2</td><td>Moana</td><td>Auli'i Cravalho, Dwayne Johnson</td></tr>
+        <tr><td>3</td><td>Avengers: Endgame</td><td>Robert Downey Jr., Chris Evans, Scarlett Johansson</td></tr>
+        <tr><td>4</td><td>Frozen</td><td>Idina Menzel, Kristen Bell</td></tr>
+        <tr><td>5</td><td>Spider-Man: No Way Home</td><td>Tom Holland, Zendaya</td></tr>
+        <tr><td>6</td><td>Titanic</td><td>Leonardo DiCaprio, Kate Winslet</td></tr>
+        <tr><td>7</td><td>Toy Story 3</td><td>Tom Hanks, Tim Allen</td></tr>
+        <tr><td>8</td><td>Harry Potter and the Sorcerer's Stone</td><td>Daniel Radcliffe, Emma Watson</td></tr>
+        <tr><td>9</td><td>The Lion King</td><td>Matthew Broderick, Jeremy Irons</td></tr>
+        <tr><td>10</td><td>Jumanji: Welcome to the Jungle</td><td>Dwayne Johnson, Kevin Hart</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="games">
+    <h2>Sunken Arcade: Computer Games</h2>
+    <span class="depth">Abyssal zone, 4,000 m</span>
+    <div class="wrap">
+    <table>
+      <caption>Top 10 Favorite Computer Games</caption>
+      <thead><tr><th>#</th><th>Title</th><th>Type of Game</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Minecraft</td><td>Sandbox</td><td>2011</td></tr>
+        <tr><td>2</td><td>Mobile Legends: Bang Bang</td><td>MOBA</td><td>2016</td></tr>
+        <tr><td>3</td><td>Roblox</td><td>Sandbox / Platform</td><td>2006</td></tr>
+        <tr><td>4</td><td>Fortnite</td><td>Battle Royale</td><td>2017</td></tr>
+        <tr><td>5</td><td>Call of Duty: Mobile</td><td>FPS</td><td>2019</td></tr>
+        <tr><td>6</td><td>Genshin Impact</td><td>Action RPG</td><td>2020</td></tr>
+        <tr><td>7</td><td>Among Us</td><td>Social deduction</td><td>2018</td></tr>
+        <tr><td>8</td><td>Valorant</td><td>Tactical FPS</td><td>2020</td></tr>
+        <tr><td>9</td><td>Subway Surfers</td><td>Endless runner</td><td>2012</td></tr>
+        <tr><td>10</td><td>Plants vs. Zombies</td><td>Tower defense</td><td>2009</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</main>
+
+<footer><a href="#top">Swim back to the surface</a></footer>
+
+<script>
+// wavy title letters
+var t=document.getElementById('title'),s=t.getAttribute('aria-label');t.textContent='';
+[...s].forEach(function(c,i){var e=document.createElement('span');e.setAttribute('aria-hidden','true');
+  e.style.setProperty('--i',i);e.innerHTML=c===' '?'&nbsp;':c;t.appendChild(e);});
+
+// bubbles and fish
+var sea=document.getElementById('sea'),r=Math.random;
+for(var i=0;i<26;i++){var b=document.createElement('i');b.className='bubble';var z=6+r()*26;
+  b.style.cssText='left:'+r()*100+'%;width:'+z+'px;height:'+z+'px;animation-duration:'+(9+r()*14)+'s;animation-delay:-'+r()*20+'s;--dx:'+(r()*80-40)+'px';
+  sea.appendChild(b);}
+['🐠','🐟','🐡','🐢','🦈','🐙','🐬'].forEach(function(f,i){var e=document.createElement('span');
+  e.className='fish'+(i%2?' back':'');e.textContent=f;
+  e.style.cssText='top:'+(12+r()*65)+'%;animation-duration:'+(22+r()*22)+'s;animation-delay:-'+r()*30+'s';
+  sea.appendChild(e);});
+
+// Send button: show a friendly confirmation instead of leaving the page
+document.getElementById('survey').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=this.elements,tops=[].map.call(this.querySelectorAll('[name=topping]:checked'),function(x){return x.value});
+  var drink=this.querySelector('[name=drink]:checked');
+  var box=document.getElementById('bottle');
+  box.style.display='block';
+  box.textContent='Bottle sent! Thanks, '+d.fullname.value+'. Favorite drink: '+(drink?drink.value:'none picked')+
+    '. Toppings: '+(tops.length?tops.join(', '):'none picked')+'.';
+});
+document.getElementById('survey').addEventListener('reset',function(){document.getElementById('bottle').style.display='none';});
+</script>
+</body>
+</html>
